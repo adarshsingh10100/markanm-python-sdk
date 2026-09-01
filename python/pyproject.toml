@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "markanm"
+version = "0.1.0a1"
+description = "Official Python SDK for MarkanM Chat Bot Platform & REST API (v0.1.0-alpha)"
+readme = "README.md"
+authors = [
+  { name = "MarkanM Developer Team", email = "developers@markanm.com" }
+]
+license = { file = "LICENSE" }
+requires-python = ">=3.8"
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Communications :: Chat",
+  "Topic :: Software Development :: Libraries :: Python Modules"
+]
+keywords = ["markanm", "bot", "chat", "sdk", "api", "oauth", "webhooks"]
+dependencies = [
+  "httpx>=0.24.0"
+]
+
+[project.urls]
+Homepage = "https://chat.markanm.com/developers"
+Documentation = "https://chat.markanm.com/developers/docs"
+Repository = "https://github.com/markanm/markanm-python-sdk"
