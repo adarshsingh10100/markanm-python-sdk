@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "markanm"
-version = "0.1.0a1"
-description = "Official Python SDK for MarkanM Chat Bot Platform & REST API (v0.1.0-alpha)"
+version = "0.1.0a2"
+description = "Official Python SDK for MarkanM Chat — build bots & AI agents with 13 AI providers (Sarvam, Groq, Gemini, OpenAI, Anthropic, Ollama & more)"
 readme = "README.md"
 authors = [
   { name = "MarkanM Developer Team", email = "developers@markanm.com" }
@@ -25,7 +25,7 @@ classifiers = [
   "Topic :: Communications :: Chat",
   "Topic :: Software Development :: Libraries :: Python Modules"
 ]
-keywords = ["markanm", "bot", "chat", "sdk", "api", "oauth", "webhooks"]
+keywords = ["markanm", "bot", "chat", "sdk", "api", "oauth", "webhooks", "ai", "sarvam", "groq", "gemini", "openai", "anthropic", "llm", "chatbot", "python-bot", "ollama", "openrouter"]
 dependencies = [
   "httpx>=0.24.0"
 ]

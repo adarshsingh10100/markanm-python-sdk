@@ -96,14 +96,17 @@ class Bot:
         """
         Dispatch incoming Event to registered event listeners & command handlers
         """
+        # Attach bot so evt.reply() works inside @bot.on() handlers
+        event._attach_bot(self)
+
         evt_type = event.type
 
-        # 1. Execute general event listeners
+        # 1. Execute general event listeners (e.g. @bot.on("command.received"))
         if evt_type in self.listeners:
             for listener in self.listeners[evt_type]:
                 await self._invoke_handler(listener, event)
 
-        # 2. Execute command handler if event is 'command.received'
+        # 2. Execute @bot.command() handler if event is 'command.received'
         if evt_type == "command.received" or (isinstance(event.payload, dict) and "command" in event.payload):
             cmd_payload = event.payload if isinstance(event.payload, dict) else {}
             cmd_name = str(cmd_payload.get("command", "")).lstrip("/").strip().lower()
@@ -173,13 +176,21 @@ class Bot:
             raise MarkanMError(f"Unsupported run mode '{mode}'. For webhooks, use framework Integration or bot.handle_webhook()")
 
     async def _polling_loop(self, interval: float):
+        poll_count = 0
         while self._is_running:
             try:
                 res = await self.client.post("/polling")
                 events_data = res.get("events", [])
-                for evt_raw in events_data:
-                    event = Event(evt_raw)
-                    await self.dispatch_event(event)
+                if events_data:
+                    print(f"📨 Received {len(events_data)} event(s)")
+                    for evt_raw in events_data:
+                        event = Event(evt_raw)
+                        print(f"  ▶ Event: type='{event.type}' payload={event.payload}")
+                        await self.dispatch_event(event)
+                else:
+                    poll_count += 1
+                    if poll_count % 10 == 0:
+                        print(f"⏳ Polling... ({poll_count * interval:.0f}s elapsed, no events yet)")
             except MarkanMError as err:
                 print(f"⚠️ MarkanM Polling Error: {err.message}")
             except Exception as exc:

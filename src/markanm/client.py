@@ -23,7 +23,7 @@ class APIClient:
     Async HTTP Client for MarkanM Bot API v1.
     Uses httpx when installed, with automatic fallback to urllib.request.
     """
-    def __init__(self, token: str, base_url: str = "https://chat.markanm.com/api/bot/v1", timeout: float = 10.0):
+    def __init__(self, token: str, base_url: str = "https://chat.markanm.com/api/bot/v1", timeout: float = 30.0):
         self.token = token
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
