@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="markanm",
-    version="0.1.0a3",
+    version="0.1.0a4",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     python_requires=">=3.9",
