@@ -5,7 +5,7 @@ MarkanM Official Python SDK (v0.1.0-alpha)
 Official Python library for building developer bots, automation, and AI agents on MarkanM Chat.
 """
 
-__version__ = "0.1.0a1"
+__version__ = "0.1.0a3"
 __author__ = "MarkanM Developer Team"
 
 from .bot import Bot
