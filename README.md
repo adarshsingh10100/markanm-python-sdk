@@ -76,12 +76,12 @@ The default accepted timestamp drift is five minutes. Webhook event formats foll
 
 ## AI helper
 
-The `AI` helper currently supports OpenAI chat completions (or an OpenAI compatible endpoint), not the 13 providers claimed in older README text:
+The `AI` helper supports OpenAI, Groq, Mistral, DeepSeek, Together, Perplexity, Sarvam, Anthropic, Gemini, Cohere, Hugging Face, Ollama, OpenRouter, and custom OpenAI-compatible endpoints:
 
 ```python
 from markanm import AI
 
-ai = AI(api_key=os.environ["OPENAI_API_KEY"], model="gpt-4o-mini")
+ai = AI(provider="openai", api_key=os.environ["OPENAI_API_KEY"], model="gpt-4o-mini")
 answer = await ai.chat("Suggest a greeting")  # keeps in-memory conversation history
 ai.reset()
 ```

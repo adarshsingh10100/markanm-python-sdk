@@ -75,6 +75,7 @@ class Bot:
         """
         Dispatch incoming Event to registered event listeners & command handlers
         """
+        event._attach_bot(self)
         evt_type = event.type
 
         # 1. Execute general event listeners
